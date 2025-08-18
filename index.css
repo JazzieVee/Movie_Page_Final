@@ -2,6 +2,8 @@
 
 * {
     font-family: "Chewy", system-ui;
+    font-weight: 400;
+    font-style: normal;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -61,7 +63,7 @@ nav {
 
 .nav__link {
     margin-right: 56px;
-    font-size: 28px;
+    font-size: 38px;
 }
 
 .nav__link:hover {
@@ -72,6 +74,7 @@ nav {
 
 .contact__btn { 
     padding: 20px 40px;
+    font-size: 28px;
     border: none;
     border-radius: 40px;
     background-color: rgb(250, 178, 44);
