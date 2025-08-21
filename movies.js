@@ -1,20 +1,13 @@
 //  http://www.omdbapi.com/?apikey=5c7ce648
 
-function handleLocalStorage() {
 const searchButton = document.getElementById('search__btn');
 const searchInput = document.getElementById('search__input');
+const resultsContainer = document.getElementById('movie__results');
 
-
-searchButton.addEventListener('click', () => {
-    const searchTerm = searchInput.value;
-    localStorage.setItem('searchTerm', searchTerm);
-    windown.location.href = 'movies.html';
-});
-}
 
      async function fetchMovies(searchTerm) {
-       const apikey = '5c7ce648';
-       const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}`;
+       const apiKey = '5c7ce648';
+       const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}`;
 
     try {
      const result = await fetch(url);
@@ -23,18 +16,14 @@ searchButton.addEventListener('click', () => {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-   
     } 
-
 
     function displayResults(data) {
         resultsContainer.innerHTML = '';
-
-
-        if(data.Response === "True") {
+     if(data.Response === "True") {
         data.Search.forEach(movie => {
         const movieElement = document.createElement('div');
-        movieElement.innerHTML = `<img src="${movie.Poster}" alt="${movie.Title} poster"><h3>${movie.Title}</h3><p>Genre: ${movie.Genre}</p><p>Runtime: ${movie.Runtime}</p>`;
+        movieElement.innerHTML = `<img src="${movie.Poster}" class="movie__poster--img"><h3 class="movie__title">${movie.Title}</h3><p>Year: ${movie.Year}</p>`;
         resultsContainer.appendChild(movieElement);
         });
     } else {
@@ -42,14 +31,22 @@ searchButton.addEventListener('click', () => {
     }
 }
 
-    // searchInput.addEventListener('input',() => {
-    //     const searchTerm = searchInput.value;
-    //     if(searchTerm) {
-    //         fetchMovies(searchTerm);
-    //     } else {
-    //         resultsContainer.innerHTML = '';
-    //     }
-    // });
+searchInput.addEventListener('input',() => {
+    const searchTerm = searchInput.value;
+    if (searchTerm) {
+        fetchMovies(searchTerm);
+    } else {
+        resultsContainer.innerHTML = '';     
+    }
+});
+
+searchButton.addEventListener('click',() => {
+    const searchTerm = searchInput.value;
+    localStorage.setItem('searchTerm', searchTerm);
+    windown.location.href = 'movies.html';
+});
+
+
 
 
     // function movieHTML (movie) {
