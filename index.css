@@ -19,10 +19,6 @@ button {
     transition: all 300ms ease;
 }
 
-button:hover {
-    background-color: rgb(224, 1, 1);
-}
-
 a {
     text-decoration: none;
     color: black;
@@ -69,7 +65,7 @@ nav {
 .nav__link:hover {
     text-decoration: underline;
     text-decoration-color: red;
-    text-underline-offset: 4px; 
+    text-underline-offset: 4px;
 }
 
 .contact__btn { 
@@ -79,6 +75,12 @@ nav {
     border-radius: 40px;
     background-color: rgb(250, 178, 44);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.24);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.24);
+    background-color: red;
 }
 
 .menu__close {
@@ -100,6 +102,7 @@ nav {
     min-height: calc(100vh - 100px);
     min-width: 100vw;
     overflow: hidden;
+    position: relative;
 }
 
 #header__container { 
@@ -157,6 +160,12 @@ nav {
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.24);
 }
 
+#search__btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.24);
+    background-color: red;
+}
+
 .fa-magnifying-glass {
     margin-top: 12px;
 }
@@ -170,6 +179,10 @@ hr {
 .movie__container {
     padding: 4px;
     margin-top: 60px;
+    overflow: hidden;
+    position: relative;
+    width: 1000px;
+    height: 700px;
 }
 
 .movie__row {
@@ -181,6 +194,15 @@ hr {
 .movie__img {
     content:"";
     height: 360px;
+    transition: transform 2s ease;
+    transition-duration: 4s;
+    position: absolute;
+    top: 0;
+    left: 100;
+}
+
+.slide-out { 
+    transform: translateX(100%);
 }
 
 
@@ -199,6 +221,7 @@ hr {
     align-items: center;
 }
 
+
 #movie__results {
     height: 200px;
     width: 100%;
@@ -209,15 +232,18 @@ hr {
     align-content: center;
 }
 
+.resultHeader {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 56px;
+    width: 100%;
+}
+
 .resultBox {
     width: 100px;
     background-color: white;
-    transition: transfrom 0.2s;
 }
 
-.resultBox:hover {
-    transform: scale(1.05);
-}
 .movie__content  {
     display: flex;
     justify-content: space-between;
@@ -233,16 +259,20 @@ hr {
     margin-bottom: 8px;
 }
 
+.movie__poster--img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.24);
+    cursor: not-allowed;
+}
+
 .movie__title {
     font-size: 18px;
     display:flex;
     justify-content: left;
     width: 100%;
+    overflow: hidden;
     max-width: 110px;
     margin-bottom: 4px;
 }
 
-.movie__img:hover {
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.24);
-}
 

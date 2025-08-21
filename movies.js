@@ -21,6 +21,11 @@ const resultsContainer = document.getElementById('movie__results');
     function displayResults(data) {
         resultsContainer.innerHTML = '';
 
+    const headerElement = document.createElement('div');
+    headerElement.className = 'resultHeader';
+    headerElement.innerHTML = `Results for "${searchTerm}"`;
+
+    resultsContainer.appendChild(headerElement);
     
      if(data.Response === "True") {
         const limitedResults = data.Search.slice(0,6);
@@ -34,17 +39,16 @@ const resultsContainer = document.getElementById('movie__results');
         resultsContainer.appendChild(movieElement);
         });
     } else {
-        resultsContainer.innerHTML = `<p>${data.Error}</p>`;
+        resultsContainer.innerHTML += `<p>${data.Error}</p>`;
     }
-}
+};
 
-searchInput.addEventListener('input',() => {
-    const searchTerm = searchInput.value;
-    if (searchTerm) {
-        fetchMovies(searchTerm);
-    } else {
-        resultsContainer.innerHTML = '';     
-    }
+document.getElementById('search__btn').addEventListener('click', function() {
+    const movieImage = document.getElementById('movieImage');
+    movieImage.classList.add('slide-out');
+    setTimeout(() => {
+    window.location.href = 'movies.html';
+}, 2000);
 });
 
 searchButton.addEventListener('click',() => {
@@ -60,3 +64,12 @@ searchButton.addEventListener('click',() => {
         fetchMovies(searchTerm);
     };
 }, 2000); 
+
+searchInput.addEventListener('input',() => {
+    const searchTerm = searchInput.value;
+    if (searchTerm) {
+        fetchMovies(searchTerm);
+    } else {
+        resultsContainer.innerHTML = '';     
+    }
+});
