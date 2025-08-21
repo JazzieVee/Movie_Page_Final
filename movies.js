@@ -20,10 +20,17 @@ const resultsContainer = document.getElementById('movie__results');
 
     function displayResults(data) {
         resultsContainer.innerHTML = '';
+
+    
      if(data.Response === "True") {
-        data.Search.forEach(movie => {
+        const limitedResults = data.Search.slice(0,6);
+        limitedResults.forEach(movie => {
         const movieElement = document.createElement('div');
-        movieElement.innerHTML = `<img src="${movie.Poster}" class="movie__poster--img"><h3 class="movie__title">${movie.Title}</h3><p>Year: ${movie.Year}</p>`;
+        movieElement.className = 'resultBox';
+        movieElement.innerHTML = 
+        `<img src="${movie.Poster}" class="movie__poster--img">
+        <h3 class="movie__title">${movie.Title}</h3>
+        <p>Year: ${movie.Year}</p>`;
         resultsContainer.appendChild(movieElement);
         });
     } else {
@@ -42,23 +49,14 @@ searchInput.addEventListener('input',() => {
 
 searchButton.addEventListener('click',() => {
     const searchTerm = searchInput.value;
-    localStorage.setItem('searchTerm', searchTerm);
-    windown.location.href = 'movies.html';
+    window.location.href = `movies.html?search=${encodeURIComponent(searchTerm)}`;
 });
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
 
-
-
-    // function movieHTML (movie) {
-    // return `<div class="movie__content">
-    // <figure class="movie__poster">
-    //     <img src="${movie.Poster}" alt="" class="poster">
-    // </figure>
-    //    <div class="movie__description">
-    //     <h4 class="movie__title">${movie.Title}</h4>
-    //     <p class="movie__genre">${movie.Genre}</p>
-    //     <p class="movie__runtime">${movie.Runtime}</p>
-    // </div>
-    // </div>
-    //  `
-    //  }
+    setTimeout(() => {
+    if(searchTerm) {
+        fetchMovies(searchTerm);
+    };
+}, 2000); 
