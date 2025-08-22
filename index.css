@@ -127,12 +127,13 @@ button:hover {
 }
 
 .header__title {
-    font-size: 74px;
+    font-size: 84px;
     width: 100%;
 }
 
 .header__sub-title {
-    font-size: 30px;
+    font-size: 50px;
+    padding-bottom: 100px;
 }
 
 .yellow {

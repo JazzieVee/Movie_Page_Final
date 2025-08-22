@@ -12,13 +12,13 @@ const resultsContainer = document.getElementById('movie__results');
     try {
      const result = await fetch(url);
      const data = await result.json();
-     displayResults(data);
+     displayResults(data, searchTerm);
     } catch (error) {
         console.error('Error fetching data:', error);
     }
     } 
 
-    function displayResults(data) {
+    function displayResults(data, searchTerm) {
         resultsContainer.innerHTML = '';
 
     const headerElement = document.createElement('div');
