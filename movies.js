@@ -67,11 +67,3 @@ searchButton.addEventListener('click',() => {
     };
 }, 2000); 
 
-searchInput.addEventListener('input',() => {
-    const searchTerm = searchInput.value;
-    if (searchTerm) {
-        fetchMovies(searchTerm);
-    } else {
-        resultsContainer.innerHTML = '';     
-    }
-});

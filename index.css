@@ -107,18 +107,6 @@ button:hover {
     background-color: red;
 }
 
-.menu__close {
-    position: absolute;
-    right: 40px;
-    top: 30px;
-    font-size: 44px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: rgb(250, 178, 44);
-    display: none;
-    text-shadow: rgba(0, 0, 0, 0.658) 2px 2px 2px;
-}
 
 /* LANDING PAGE */
 
