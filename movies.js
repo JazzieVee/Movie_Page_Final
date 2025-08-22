@@ -39,31 +39,32 @@ const resultsContainer = document.getElementById('movie__results');
         resultsContainer.appendChild(movieElement);
         });
     } else {
-        resultsContainer.innerHTML += `<p>${data.Error}</p>`;
+        resultsContainer.innerHTML = `<p>${data.Error}</p>`;
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const searchButton = document.getElementById('search__btn');
-    searchButton.addEventListener('click', () => {
-    const spinner = document.getElementById('fa-arrows-rotate');
-    setTimeout(() => {
-    spinner.style.display = 'none';
-    }, 2000);
-});
-});
-
 searchButton.addEventListener('click',() => {
     const searchTerm = searchInput.value;
-    window.location.href = `movies.html?search=${encodeURIComponent(searchTerm)}`;
+    setTimeout (() => {
+    if (searchTerm) {
+        fetchMovies(searchTerm);
+    } else {
+        resultsContainer.innerHTML = 'Movie not found';     
+    }
+}, 2000);
 });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get('search');
+// searchButton.addEventListener('click',() => {
+//     const searchTerm = searchInput.value;
+//     window.location.href = `movies.html?search=${encodeURIComponent(searchTerm)}`;
+// });
 
-    setTimeout(() => {
-    if(searchTerm) {
-        fetchMovies(searchTerm);
-    };
-}, 2000); 
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const searchTerm = urlParams.get('search');
+
+//     setTimeout(() => {
+//     if(searchTerm) {
+//         fetchMovies(searchTerm);
+//     };
+// }, 2000); 
 
