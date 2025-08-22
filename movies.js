@@ -53,18 +53,3 @@ searchButton.addEventListener('click',() => {
     }
 }, 2000);
 });
-
-// searchButton.addEventListener('click',() => {
-//     const searchTerm = searchInput.value;
-//     window.location.href = `movies.html?search=${encodeURIComponent(searchTerm)}`;
-// });
-
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const searchTerm = urlParams.get('search');
-
-//     setTimeout(() => {
-//     if(searchTerm) {
-//         fetchMovies(searchTerm);
-//     };
-// }, 2000); 
-
