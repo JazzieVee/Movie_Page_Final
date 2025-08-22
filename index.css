@@ -9,6 +9,7 @@
     box-sizing: border-box;
 } 
 
+
 body {
     min-height: 100vh;
     overflow: hidden;
@@ -19,10 +20,19 @@ button {
     transition: all 300ms ease;
 }
 
+button:hover {
+    transform: scale(1.1);
+}
+
+button:actve {
+    transform: scale(0.9);
+}
+
 a {
     text-decoration: none;
     color: black;
 }
+
 
 /* NAVIGATION */
 
@@ -62,10 +72,24 @@ nav {
     font-size: 38px;
 }
 
-.nav__link:hover {
-    text-decoration: underline;
-    text-decoration-color: red;
-    text-underline-offset: 4px;
+.link__hover-effect {
+    position: relative;
+}
+
+.link__hover-effect:after {
+    content: "";
+    position: absolute;
+    background-color: red;
+    bottom: -3px;
+    height: 3px;
+    width: 0;
+    right: 0;
+    transition: all 300ms ease;
+}
+
+.link__hover-effect:hover:after {
+    left: 0;
+    width: 100%;
 }
 
 .contact__btn { 
@@ -102,7 +126,6 @@ button:hover {
     min-height: calc(100vh - 100px);
     min-width: 100vw;
     overflow: hidden;
-    position: relative;
 }
 
 #header__container { 
@@ -178,6 +201,7 @@ hr {
 
 .movie__container {
     padding: 4px;
+    margin: 0 auto;
     margin-top: 60px;
     overflow: hidden;
     position: relative;
@@ -188,21 +212,12 @@ hr {
 .movie__row {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 
 .movie__img {
     content:"";
     height: 360px;
-    transition: transform 2s ease;
-    transition-duration: 4s;
-    position: absolute;
-    top: 0;
-    left: 100;
-}
-
-.slide-out { 
-    transform: translateX(100%);
 }
 
 
@@ -210,6 +225,7 @@ hr {
 
 .movie__list--container {
     padding: 150px;
+    position: relative;
 }
 
 .movie__list--row {
@@ -221,6 +237,21 @@ hr {
     align-items: center;
 }
 
+.fa-arrows-rotate {
+    animation: spinner 750ms linear infinite;
+    font-size: 80px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    display: none;
+}
+
+
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 #movie__results {
     height: 200px;
@@ -274,5 +305,6 @@ hr {
     max-width: 110px;
     margin-bottom: 4px;
 }
+
 
 

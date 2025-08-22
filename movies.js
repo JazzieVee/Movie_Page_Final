@@ -43,12 +43,14 @@ const resultsContainer = document.getElementById('movie__results');
     }
 };
 
-document.getElementById('search__btn').addEventListener('click', function() {
-    const movieImage = document.getElementById('movieImage');
-    movieImage.classList.add('slide-out');
+document.addEventListener('DOMContentLoaded', () => {
+    const searchButton = document.getElementById('search__btn');
+    searchButton.addEventListener('click', () => {
+    const spinner = document.getElementById('fa-arrows-rotate');
     setTimeout(() => {
-    window.location.href = 'movies.html';
-}, 2000);
+    spinner.style.display = 'none';
+    }, 2000);
+});
 });
 
 searchButton.addEventListener('click',() => {
